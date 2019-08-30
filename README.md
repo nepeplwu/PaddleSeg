@@ -55,7 +55,7 @@ PaddleSeg是基于[PaddlePaddle](https://www.paddlepaddle.org.cn)开发的语义
 * [自定义数据的准备与标注]()
 * [预训练模型列表]()
 * [数据和配置校验]()
-* 基于预训练模型Finetune
+* 基于预训练模型训练
   * [DeepLabv3+ mobilenet]()
   * [DeepLabv3+ xception]()
   * [XXXX]()
