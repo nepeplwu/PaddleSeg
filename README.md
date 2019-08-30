@@ -52,14 +52,16 @@ PaddleSeg是基于[PaddlePaddle](https://www.paddlepaddle.org.cn)开发的语义
 
 ### 基础教程
 
-* [预训练模型列表]()
 * [自定义数据的准备与标注]()
+* [预训练模型列表]()
 * [数据和配置校验]()
-* [基于DeepLabv3+ mobilenet预训练模型进行Finetune]()
-* [基于DeepLabv3+ xception预训练模型进行Finetune]()
-* [基于Unet预训练模型进行Finetune]()
-* [基于ICNet预训练模型进行Finetune]()
-* [基于PaddleCV模型进行Finetune]()
+* 基于分割预训练模型Finetune
+  * [基于DeepLabv3+ mobilenet预训练模型进行Finetune]()
+  * [基于DeepLabv3+ xception预训练模型进行Finetune]()
+  * [基于Unet预训练模型进行Finetune]()
+  * [基于ICNet预训练模型进行Finetune]()
+* 基于Paddle分类模型Finetune
+  * [XXXX]()
 
 ### 预测部署
 
