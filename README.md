@@ -25,19 +25,23 @@ PaddleSeg是基于[PaddlePaddle](https://www.paddlepaddle.org.cn)开发的语义
 
   - 基于[Paddle Serving](https://github.com/PaddlePaddle/Serving)和PaddlePaddle高性能预测引擎，结合百度开放的AI能力，轻松搭建人像分割和车道线分割服务。
 
+</br>
+</br>
+
 ## 在线体验
 
 * [普通分割模型体验]()
 * [ACE2P体验]()
 * [HumanSeg体验]()
 
+</br>
+</br>
+
 ## 使用教程
 
 我们提供了一系列的使用教程，来说明如何使用PaddleSeg完成一个语义分割模型的训练、评估、部署。
 
 这一系列的文档被分为`基础教程`、`进阶教程`、`高级教程`三个部分，三个教程由前浅至深，依次介绍PaddleSeg的使用和设计理念。
-
-
 
 ### 基础使用
 
@@ -65,6 +69,9 @@ PaddleSeg是基于[PaddlePaddle](https://www.paddlepaddle.org.cn)开发的语义
 * [模型的调优技巧]()
 * [特色垂类模型使用]()
 
+</br>
+</br>
+
 ## FAQ
 
 #### Q:图像分割的数据增强如何配置，unpadding, step-scaling, range-scaling的原理是什么？
@@ -75,15 +82,19 @@ A: 数据增强的配置可以参考文档[数据增强](./docs/data_aug.md)
 
 A: 降低Batch size，使用Group Norm策略等。
 
+</br>
+</br>
+
 ## 更新日志
 
-### 2019.08.26
+* v0.1.0
+  ### 2019.08.26
+  * PaddleSeg分割库初始版本发布，包含DeepLabv3+, U-Net, ICNet三类分割模型, 其中DeepLabv3+支持Xception, MobileNet两种可调节的骨干网络。
+  * CVPR 19' LIP人体部件分割比赛冠军预测模型发布[ACE2P](./contrib/ACE2P)
+  * 预置基于DeepLabv3+网络的[人像分割](./contrib/HumanSeg/)和[车道线分割](./contrib/RoadLine)预测模型发布
 
-#### v0.1.0
-
-* PaddleSeg分割库初始版本发布，包含DeepLabv3+, U-Net, ICNet三类分割模型, 其中DeepLabv3+支持Xception, MobileNet两种可调节的骨干网络。
-* CVPR 19' LIP人体部件分割比赛冠军预测模型发布[ACE2P](./contrib/ACE2P)
-* 预置基于DeepLabv3+网络的[人像分割](./contrib/HumanSeg/)和[车道线分割](./contrib/RoadLine)预测模型发布
+</br>
+</br>
 
 ## 如何贡献代码
 
