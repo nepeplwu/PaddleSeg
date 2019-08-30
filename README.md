@@ -58,10 +58,9 @@ PaddleSeg是基于[PaddlePaddle](https://www.paddlepaddle.org.cn)开发的语义
 * 基于分割预训练模型Finetune
   * [DeepLabv3+ mobilenet]()
   * [DeepLabv3+ xception]()
+  * [XXXX]()
   * [Unet]()
   * [ICNet]()
-* 基于Paddle分类模型Finetune
-  * [XXXX]()
 
 ### 预测部署
 
