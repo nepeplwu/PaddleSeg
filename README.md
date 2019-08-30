@@ -25,13 +25,26 @@ PaddleSeg是基于[PaddlePaddle](https://www.paddlepaddle.org.cn)开发的语义
 
   - 基于[Paddle Serving](https://github.com/PaddlePaddle/Serving)和PaddlePaddle高性能预测引擎，结合百度开放的AI能力，轻松搭建人像分割和车道线分割服务。
 
-## 在线快速体验
+## 在线体验
 
-### 普通分割模型体验
-### ACE2P体验
-### HumanSeg体验
+* [普通分割模型体验]()
+* [ACE2P体验]()
+* [HumanSeg体验]()
 
 ## 使用教程
+
+我们提供了一系列的使用教程，来说明如何使用PaddleSeg完成一个语义分割模型的训练、评估、部署。
+
+这一系列的文档被分为`基础教程`、`进阶教程`、`高级教程`三个部分，三个教程由前浅至深，依次介绍PaddleSeg的使用和设计理念。
+
+
+
+### 基础使用
+
+本系列教程旨在介绍以下概念：
+1. 什么是图像语义分割
+2. 常见的深度学习语义分割模型
+3. 如何使用PaddleSeg训练基于自定义数据集的模型
 
 * [图像语义分割任务是什么？]()
 * [常见分割模型介绍]()
@@ -39,14 +52,17 @@ PaddleSeg是基于[PaddlePaddle](https://www.paddlepaddle.org.cn)开发的语义
 * [预训练模型下载和配置]()
 * [数据和配置校验]()
 * [训练/评估/可视化/模型导出]()
+
+### 进阶使用
+
 * [PaddleSeg预测库使用]()
 * [PaddleSeg模型部署与Serving服务]()
 
-## 高级教程
+### 高级使用
 
 * [可视化训练过程]()
 * [PaddleSeg的数据增强]()
-* [模型的调优]()
+* [模型的调优技巧]()
 * [特色垂类模型使用]()
 
 ## FAQ
