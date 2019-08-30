@@ -25,38 +25,29 @@ PaddleSeg是基于[PaddlePaddle](https://www.paddlepaddle.org.cn)开发的语义
 
   - 基于[Paddle Serving](https://github.com/PaddlePaddle/Serving)和PaddlePaddle高性能预测引擎，结合百度开放的AI能力，轻松搭建人像分割和车道线分割服务。
 
+## 在线快速体验
 
-更多模型信息与技术细节请查看[模型介绍](./docs/models.md)和[预训练模型](./docs/model_zoo.md)
+### 普通分割模型体验
+### ACE2P体验
+### HumanSeg体验
 
-## AI Studio教程
+## 使用教程
 
-### 快速开始
+* [图像语义分割任务是什么？]()
+* [常见分割模型介绍]()
+* [自定义数据的准备与标注]()
+* [预训练模型下载和配置]()
+* [数据和配置校验]()
+* [训练/评估/可视化/模型导出]()
+* [PaddleSeg预测库使用]()
+* [PaddleSeg模型部署与Serving服务]()
 
-通过 [PaddleSeg人像分割](https://aistudio.baidu.com/aistudio/projectDetail/100798) 教程可快速体验PaddleSeg人像分割模型的效果。
+## 高级教程
 
-### 入门教程
-
-入门教程以经典的U-Net模型为例, 结合Oxford-IIIT宠物数据集，快速熟悉PaddleSeg使用流程, 详情请点击[U-Net宠物分割](https://aistudio.baidu.com/aistudio/projectDetail/102889)。
-
-### 高级教程
-
-高级教程以DeepLabv3+模型为例，结合Cityscapes数据集，快速了解ASPP, Backbone网络切换，多卡Batch Norm同步等策略，详情请点击[DeepLabv3+图像分割](https://aistudio.baidu.com/aistudio/projectDetail/101696)。
-
-### 垂类模型
-
-更多特色垂类分割模型如LIP人体部件分割、人像分割、车道线分割模型可以参考[contrib](./contrib)
-
-## 使用文档
-
-* [安装说明](./docs/installation.md)
-* [数据准备](./docs/data_prepare.md)
-* [数据增强](./docs/data_aug.md)
-* [预训练模型](./docs/model_zoo.md)
-* [训练/评估/预测(可视化)](./docs/usage.md)
-* [预测库集成](./inference/README.md)
-* [服务端部署](./serving/README.md)
-* [垂类分割模型](./contrib/README.md)
-
+* [可视化训练过程]()
+* [PaddleSeg的数据增强]()
+* [模型的调优]()
+* [特色垂类模型使用]()
 
 ## FAQ
 
