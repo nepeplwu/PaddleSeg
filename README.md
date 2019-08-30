@@ -50,12 +50,12 @@ PaddleSeg是基于[PaddlePaddle](https://www.paddlepaddle.org.cn)开发的语义
 * [常见分割模型介绍]()
 * [训练/评估]()
 
-### 基础教程
+### 进阶使用
 
 * [自定义数据的准备与标注]()
 * [预训练模型列表]()
 * [数据和配置校验]()
-* 基于分割预训练模型Finetune
+* 基于预训练模型Finetune
   * [DeepLabv3+ mobilenet]()
   * [DeepLabv3+ xception]()
   * [XXXX]()
