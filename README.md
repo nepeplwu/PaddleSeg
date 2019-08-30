@@ -56,10 +56,10 @@ PaddleSeg是基于[PaddlePaddle](https://www.paddlepaddle.org.cn)开发的语义
 * [预训练模型列表]()
 * [数据和配置校验]()
 * 基于分割预训练模型Finetune
-  * [基于DeepLabv3+ mobilenet预训练模型进行Finetune]()
-  * [基于DeepLabv3+ xception预训练模型进行Finetune]()
-  * [基于Unet预训练模型进行Finetune]()
-  * [基于ICNet预训练模型进行Finetune]()
+  * [DeepLabv3+ mobilenet]()
+  * [DeepLabv3+ xception]()
+  * [Unet]()
+  * [ICNet]()
 * 基于Paddle分类模型Finetune
   * [XXXX]()
 
