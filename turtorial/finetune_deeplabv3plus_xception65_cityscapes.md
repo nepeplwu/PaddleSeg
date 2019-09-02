@@ -77,10 +77,11 @@ AUG:
     FIX_RESIZE_SIZE: (512, 512)
 BATCH_SIZE: 4
 TRAIN:
-    MODEL_SAVE_DIR: "./test/saved_models/unet_pet/"
-    PRETRAINED_MODEL: "./test/models/unet_coco/"
+    MODEL_SAVE_DIR: "./test/saved_models/deeplabv3plus_xception65_cityscapes_pet/"
     RESUME: False
     SNAPSHOT_EPOCH: 10
+TEST:
+    TEST_MODEL_PATH: "./test/saved_models/deeplabv3plus_xception65_cityscapes_pet/final"
 SOLVER:
     NUM_EPOCHS: 500
     LR: 0.005
@@ -90,11 +91,15 @@ SOLVER:
 
 ## 四. 开始训练
 
+使用下述命令启动训练
+
 ```shell
 python pdseg/train.py --use_gpu --cfg ./configs/test_pet.yaml 
 ```
 
 ## 五. 进行评估
+
+使用下述命令启动评估
 
 ```shell
 python pdseg/eval.py --use_gpu --cfg ./configs/test_pet.yaml 
