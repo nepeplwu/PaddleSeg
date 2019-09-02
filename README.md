@@ -35,9 +35,11 @@ PaddleSeg是基于[PaddlePaddle](https://www.paddlepaddle.org.cn)开发的语义
 
 PaddleSeg提供了许多类型的预训练模型，并且以NoteBook的方式提供了在线体验的教程，欢迎体验：
 
-* 基于cityscpaes数据集进行预训练的deeplabv3+ mobilenet v2模型 [点击体验](https://aistudio.baidu.com/aistudio/projectDetail/101696)
-* CVPR 19 Look into Person (LIP) 单人人像分割比赛冠军模型，[点击体验]()
-* 基于百度视觉技术部数据进行预训练的人像分割模型[点击体验](https://aistudio.baidu.com/aistudio/projectDetail/100798)
+|模型|数据集|NoteBook|
+|-|-|-|
+|deeplabv3+ mobilenet v2|cityscapes|[点击体验](https://aistudio.baidu.com/aistudio/projectDetail/101696)|
+|deeplabv3+ mobilenet v2|百度视觉技术部数海量数据|[点击体验](https://aistudio.baidu.com/aistudio/projectDetail/100798)|
+|ACE2P|LIP|[点击体验]()|
 
 </br>
 </br>
