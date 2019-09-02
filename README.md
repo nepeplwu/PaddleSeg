@@ -53,7 +53,7 @@ PaddleSeg提供了多种预训练模型，并且以NoteBook的方式提供了在
 
 ### 基础功能
 
-* [分割模型列表与简介](./docs/models.md)
+* [模型列表与简介](./docs/models.md)
 * [预训练模型列表](./docs/model_zoo.md)
 * [自定义数据的准备与标注](./docs/data_prepare.md)
 * [数据和配置校验](./docs/check.md)
@@ -61,7 +61,7 @@ PaddleSeg提供了多种预训练模型，并且以NoteBook的方式提供了在
   * [DeepLabv3+ mobilenet](./turtorial/deeplabv3p_mobilenet)
   * [DeepLabv3+ xception65](./turtorial/finetune_deeplabv3plus_xception65_cityscapes.md)
   * [DeepLabv3+ xception71](./turtorial/deeplabv3p_xception71)
-  * [Unet](./turtorial/unet)
+  * [UNet](./turtorial/unet)
   * [ICNet](./turtorial/icnet)
 
 ### 预测部署
