@@ -63,8 +63,9 @@ DATASET:
 # 预训练模型配置
 MODEL:
     MODEL_NAME: "deeplabv3p"
-    BACKBONE: "xception65"
     DEFAULT_NORM_TYPE: "bn"
+    DEEPLAB:
+        BACKBONE: "xception_65"
 TRAIN:
     PRETRAINED_MODEL: "./test/models/unet_coco/"
 
@@ -81,7 +82,7 @@ TRAIN:
     RESUME: False
     SNAPSHOT_EPOCH: 10
 TEST:
-    TEST_MODEL_PATH: "./test/saved_models/deeplabv3plus_xception65_cityscapes_pet/final"
+    TEST_MODEL: "./test/saved_models/deeplabv3plus_xception65_cityscapes_pet/final"
 SOLVER:
     NUM_EPOCHS: 500
     LR: 0.005
