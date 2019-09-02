@@ -31,11 +31,13 @@ PaddleSeg是基于[PaddlePaddle](https://www.paddlepaddle.org.cn)开发的语义
 
 ## 在线体验
 
-简单介绍下语义分割
+语义分割是计算机视觉中的基本任务，用于对图像中不同类别的实体进行识别并给出分割后的结果。目前该技术在诸如工业质检、地块分割、自动驾驶等方面有着广泛的应用。
 
-* [普通分割模型体验]()
-* [ACE2P体验]()
-* [HumanSeg体验]()
+PaddleSeg提供了许多类型的预训练模型，并且以NoteBook的方式提供了在线体验的教程，欢迎体验：
+
+* 基于cityscpaes数据集进行预训练的deeplabv3+ mobilenet v2模型 [点击体验](https://aistudio.baidu.com/aistudio/projectDetail/101696)
+* CVPR 19 Look into Person (LIP) 单人人像分割比赛冠军模型，[点击体验]()
+* 基于百度视觉技术部数据进行预训练的人像分割模型[点击体验](https://aistudio.baidu.com/aistudio/projectDetail/100798)
 
 </br>
 </br>
