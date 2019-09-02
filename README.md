@@ -6,9 +6,7 @@
 
 PaddleSeg是基于[PaddlePaddle](https://www.paddlepaddle.org.cn)开发的语义分割库，覆盖了DeepLabv3+, U-Net, ICNet三类主流的分割模型。通过统一的配置，帮助用户更便捷地完成从训练到部署的全流程图像分割应用。
 
-具备高性能、丰富的数据增强、工业级部署、全流程应用的特点。
-
-
+PaddleSeg具备高性能、丰富的数据增强、工业级部署、全流程应用的特点:
 
 - **丰富的数据增强**
 
@@ -31,9 +29,7 @@ PaddleSeg是基于[PaddlePaddle](https://www.paddlepaddle.org.cn)开发的语义
 
 ## 在线体验
 
-语义分割是计算机视觉中的基本任务，用于对图像中不同类别的实体进行识别并给出分割后的结果。目前该技术在诸如工业质检、地块分割、自动驾驶等方面有着广泛的应用。
-
-PaddleSeg提供了许多类型的预训练模型，并且以NoteBook的方式提供了在线体验的教程，欢迎体验：
+PaddleSeg提供了多种预训练模型，并且以NoteBook的方式提供了在线体验的教程，欢迎体验：
 
 |模型|数据集|NoteBook|
 |-|-|-|
