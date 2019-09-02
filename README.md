@@ -59,7 +59,7 @@ PaddleSeg提供了多种预训练模型，并且以NoteBook的方式提供了在
 * [数据和配置校验](./docs/check.md)
 * 基于预训练模型训练
   * [DeepLabv3+ mobilenet](./turtorial/deeplabv3p_mobilenet)
-  * [DeepLabv3+ xception65](./turtorial/deeplabv3p_xception65)
+  * [DeepLabv3+ xception65](./turtorial/finetune_deeplabv3plus_xception65_cityscapes.md)
   * [DeepLabv3+ xception71](./turtorial/deeplabv3p_xception71)
   * [Unet](./turtorial/unet)
   * [ICNet](./turtorial/icnet)
