@@ -44,16 +44,16 @@ PaddleSeg提供了多种预训练模型，并且以NoteBook的方式提供了在
 
 我们提供了一系列的使用教程，来说明如何使用PaddleSeg完成一个语义分割模型的训练、评估、部署。
 
-这一系列的文档被分为`快速入门`、`进阶使用`、`预测部署`、`高级功能`四个部分，四个教程由浅至深地介绍PaddleSeg的设计思路和使用方法。
+这一系列的文档被分为`快速入门`、`基础功能`、`预测部署`、`高级功能`四个部分，四个教程由浅至深地介绍PaddleSeg的设计思路和使用方法。
 
 ### 快速入门
 
 * [快速安装](./docs/installation.md)
 * [训练/评估](./docs/usage.md)
 
-### 进阶使用
+### 基础功能
 
-* [常见分割模型介绍](./docs/models.md)
+* [分割模型列表与简介](./docs/models.md)
 * [预训练模型列表](./docs/model_zoo.md)
 * [自定义数据的准备与标注](./docs/data_prepare.md)
 * [数据和配置校验](./docs/check.md)
@@ -76,6 +76,7 @@ PaddleSeg提供了多种预训练模型，并且以NoteBook的方式提供了在
 * [PaddleSeg的数据增强](./docs/data_aug.md))
 * [模型的调优技巧](./docs/config_tips.md)
 * [特色垂类模型使用](./contrib)
+* [Normarlization]()
 
 </br>
 </br>
