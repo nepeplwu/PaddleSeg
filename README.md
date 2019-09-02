@@ -49,13 +49,13 @@ PaddleSeg提供了多种预训练模型，并且以NoteBook的方式提供了在
 ### 快速入门
 
 * [快速安装](./docs/installation.md)
-* [常见分割模型介绍](./docs/models.md)
 * [训练/评估](./docs/usage.md)
 
 ### 进阶使用
 
-* [自定义数据的准备与标注](./docs/data_prepare.md)
+* [常见分割模型介绍](./docs/models.md)
 * [预训练模型列表](./docs/model_zoo.md)
+* [自定义数据的准备与标注](./docs/data_prepare.md)
 * [数据和配置校验](./docs/check.md)
 * 基于预训练模型训练
   * [DeepLabv3+ mobilenet](./turtorial/deeplabv3p_mobilenet)
