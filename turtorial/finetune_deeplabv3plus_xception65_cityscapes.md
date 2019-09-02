@@ -51,6 +51,7 @@ python pretrained_model/download_model.py --name deeplabv3plus_xception65_citysc
 |DATASET.VAL_FILE_LIST|./dataset/mini_pet/file_list/val_list.txt|
 
 预训练模型的配置，可以从下载预训练模型时的输出看到：
+
 |配置|值|
 |-|-|
 |MODEL.MODEL_NAME|deeplabv3p|
