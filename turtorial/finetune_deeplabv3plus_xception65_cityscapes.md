@@ -29,10 +29,15 @@ python pretrained_model/download_model.py --name deeplabv3plus_xception65_citysc
 
 |配置|选项|含义|值|
 |-|-|-|-|
-|数据集|DATASET.DATA_DIR|数据集根目录||
-||DATASET.TRAIN_FILE_LIST|训练集文件列表||
-||DATASET.TEST_FILE_LIST|测试集文件列表||
-||DATASET.VAL_FILE_LIST|评估集文件列表||
+|数据集|DATASET.DATA_DIR|数据集根目录|./dataset/mini_pet/|
+||DATASET.TRAIN_FILE_LIST|训练集文件列表|./dataset/mini_pet/file_list/train_list.txt|
+||DATASET.TEST_FILE_LIST|测试集文件列表|./dataset/mini_pet/file_list/test_list.txt|
+||DATASET.VAL_FILE_LIST|评估集文件列表|./dataset/mini_pet/file_list/val_list.txt|
+|预训练模型|MODEL.MODEL_NAME|模型名称|deeplabv3p|
+||MODEL.DEEPLAB.BACKBONE|DeeplabV3+的backbone网络|xception65|
+||MODEL.DEFAULT_NORM_TYPE|Normalization类型|bn|
+||TRAIN.PRETRAINED_MODEL|预训练模型路径|./pretrained_model/deeplabv3plus_xception65_cityscapes|
+|其他|--|--|--|
 
 ```shell
 python pdseg/train.py --use_gpu \
@@ -42,8 +47,7 @@ python pdseg/train.py --use_gpu \
                        DATASET.TEST_FILE_LIST ./dataset/mini_pet/file_list/test_list.txt \
                        DATASET.VAL_FILE_LIST ./dataset/mini_pet/file_list/val_list.txt \
                        MODEL.MODEL_NAME deeplabv3p \
-                       MODEL.DEEPLAB.BACKBONE mobilenet \
-                       MODEL.DEEPLAB.DEPTH_MULTIPLIER 1.0 \
+                       MODEL.DEEPLAB.BACKBONE xception65 \
                        MODEL.DEFAULT_NORM_TYPE bn \
                        TRAIN.PRETRAINED_MODEL ./pretrained_model/deeplabv3plus_xception65_cityscapes 
 ```
