@@ -24,7 +24,7 @@ python dataset/download_pet.py
 python pretrained_model/download_model.py --name deeplabv3plus_xception65_cityscapes
 ```
 
-## 三. 启动训练
+## 三. 准备配置
 
 在开始训练和评估之前，我们需要确定相关配置，从本教程的角度，配置分为三部分：
 
@@ -43,7 +43,6 @@ python pretrained_model/download_model.py --name deeplabv3plus_xception65_citysc
   * Batch大小
   * ...
   
-数据集的配置如下：
 
 |配置|值|
 |-|-|
@@ -54,15 +53,46 @@ python pretrained_model/download_model.py --name deeplabv3plus_xception65_citysc
 
 预训练模型的配置尤为重要，如果模型或者BACKBONE配置错误，会导致预训练的参数没有加载。模型配置可以从下载预训练模型时的输出看到：
 
-|配置|值|
-|-|-|
-|MODEL.MODEL_NAME|deeplabv3p|
-|MODEL.DEEPLAB.BACKBONE|xception65|
-|MODEL.DEFAULT_NORM_TYPE|bn|
-|TRAIN.PRETRAINED_MODEL|./pretrained_model/deeplabv3plus_xception65_cityscapes|
+```yaml
+# 数据集配置
+DATASET:
+    DATA_DIR: "./dataset/mini_pet/"
+    NUM_CLASSES: 3
+    TEST_FILE_LIST: "./dataset/mini_pet/file_list/test_list.txt"
+    TRAIN_FILE_LIST: "./dataset/mini_pet/file_list/train_list.txt"
+    VAL_FILE_LIST: "./dataset/mini_pet/file_list/val_list.txt"
+    VIS_FILE_LIST: "./dataset/mini_pet/file_list/test_list.txt"
 
-其他配置，如学习率相关的，我们直接使用configs里面提供的默认配置`configs/unet_pet.yaml`
 
+# 预训练模型配置
+MODEL:
+    MODEL_NAME: "deeplabv3p"
+    BACKBONE: "xception65"
+    DEFAULT_NORM_TYPE: "bn"
+TRAIN:
+    PRETRAINED_MODEL: "./test/models/unet_coco/"
+
+
+# 其他配置
+TRAIN_CROP_SIZE: (512, 512) 
+EVAL_CROP_SIZE: (512, 512) 
+AUG:
+    AUG_METHOD: "unpadding" 
+    FIX_RESIZE_SIZE: (512, 512)
+BATCH_SIZE: 4
+TRAIN:
+    MODEL_SAVE_DIR: "./test/saved_models/unet_pet/"
+    PRETRAINED_MODEL: "./test/models/unet_coco/"
+    RESUME: False
+    SNAPSHOT_EPOCH: 10
+SOLVER:
+    NUM_EPOCHS: 500
+    LR: 0.005
+    LR_POLICY: "poly"
+    OPTIMIZER: "adam"
+```
+
+## 四. 开始训练
 
 ```shell
 python pdseg/train.py --use_gpu \
@@ -77,7 +107,7 @@ python pdseg/train.py --use_gpu \
                        TRAIN.PRETRAINED_MODEL ./pretrained_model/deeplabv3plus_xception65_cityscapes 
 ```
 
-## 四. 进行评估
+## 五. 进行评估
 
 ```shell
 python pdseg/eval.py --use_gpu \
