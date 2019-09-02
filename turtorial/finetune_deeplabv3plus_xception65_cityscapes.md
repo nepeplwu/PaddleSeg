@@ -26,18 +26,40 @@ python pretrained_model/download_model.py --name deeplabv3plus_xception65_citysc
 
 在开始训练和评估之前，我们需要确定相关配置，从本教程的角度，配置分为三部分：
 
+* 数据集
+  * 训练集主目录
+  * 训练集文件列表
+  * 测试集文件列表
+  * 评估集文件列表
+* 预训练模型
+  * 预训练模型名称
+  * 预训练模型的backbone网络
+  * 预训练模型的Normalization类型
+  * 预训练模型路径
+* 其他
+  * 学习率
+  * Batch大小
+  * ...
+  
+数据集的配置如下：
 
-|配置|选项|含义|值|
-|-|-|-|-|
-|数据集|DATASET.DATA_DIR|数据集根目录|./dataset/mini_pet/|
-||DATASET.TRAIN_FILE_LIST|训练集文件列表|./dataset/mini_pet/file_list/train_list.txt|
-||DATASET.TEST_FILE_LIST|测试集文件列表|./dataset/mini_pet/file_list/test_list.txt|
-||DATASET.VAL_FILE_LIST|评估集文件列表|./dataset/mini_pet/file_list/val_list.txt|
-|预训练模型|MODEL.MODEL_NAME|模型名称|deeplabv3p|
-||MODEL.DEEPLAB.BACKBONE|DeeplabV3+的backbone网络|xception65|
-||MODEL.DEFAULT_NORM_TYPE|Normalization类型|bn|
-||TRAIN.PRETRAINED_MODEL|预训练模型路径|./pretrained_model/deeplabv3plus_xception65_cityscapes|
-|其他|--|--|--|
+|配置|值|
+|-|-|
+|DATASET.DATA_DIR|./dataset/mini_pet/|
+|DATASET.TRAIN_FILE_LIST|./dataset/mini_pet/file_list/train_list.txt|
+|DATASET.TEST_FILE_LIST|./dataset/mini_pet/file_list/test_list.txt|
+|DATASET.VAL_FILE_LIST|./dataset/mini_pet/file_list/val_list.txt|
+
+预训练模型的配置，可以从下载预训练模型时的输出看到：
+|配置|值|
+|-|-|
+|MODEL.MODEL_NAME|deeplabv3p|
+|MODEL.DEEPLAB.BACKBONE|xception65|
+|MODEL.DEFAULT_NORM_TYPE|bn|
+|TRAIN.PRETRAINED_MODEL|./pretrained_model/deeplabv3plus_xception65_cityscapes|
+
+其他配置，如学习率相关的，我们直接使用configs里面提供的默认配置`configs/unet_pet.yaml`
+
 
 ```shell
 python pdseg/train.py --use_gpu \
