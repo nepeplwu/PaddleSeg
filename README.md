@@ -73,7 +73,7 @@ PaddleSeg提供了多种预训练模型，并且以NoteBook的方式提供了在
 ### 高级功能
 
 * [可视化训练过程](./docs/visual_tips.md)
-* [PaddleSeg的数据增强](./docs/data_aug.md))
+* [PaddleSeg的数据增强](./docs/data_aug.md)
 * [模型的调优技巧](./docs/config_tips.md)
 * [特色垂类模型使用](./contrib)
 * [Normarlization]()
