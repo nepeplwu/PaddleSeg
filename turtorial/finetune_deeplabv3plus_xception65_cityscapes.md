@@ -43,7 +43,11 @@ python pretrained_model/download_model.py --name deeplabv3plus_xception65_citysc
   * Batch大小
   * ...
 
-预训练模型的配置尤为重要，如果模型或者BACKBONE配置错误，会导致预训练的参数没有加载。模型配置可以从下载预训练模型时的输出看到：
+在三者中，预训练模型的配置尤为重要，如果模型或者BACKBONE配置错误，会导致预训练的参数没有加载，进而影响收敛速度。预训练模型相关的配置可以从下载预训练模型时的输出看到
+
+数据集的配置和数据路径有关，在本教程中，数据存放在`dataset/mini_pet`中
+
+其他配置则根据数据集和机器环境的情况进行调节，最终我们保存一个如下内容的yaml配置文件，存放路径为`configs/test_pet.yaml`
 
 ```yaml
 # 数据集配置
@@ -87,30 +91,11 @@ SOLVER:
 ## 四. 开始训练
 
 ```shell
-python pdseg/train.py --use_gpu \
-                       --cfg ./configs/unet_pet.yaml \
-                       DATASET.DATA_DIR ./dataset/mini_pet/ \
-                       DATASET.TRAIN_FILE_LIST ./dataset/mini_pet/file_list/train_list.txt \
-                       DATASET.TEST_FILE_LIST ./dataset/mini_pet/file_list/test_list.txt \
-                       DATASET.VAL_FILE_LIST ./dataset/mini_pet/file_list/val_list.txt \
-                       MODEL.MODEL_NAME deeplabv3p \
-                       MODEL.DEEPLAB.BACKBONE xception65 \
-                       MODEL.DEFAULT_NORM_TYPE bn \
-                       TRAIN.PRETRAINED_MODEL ./pretrained_model/deeplabv3plus_xception65_cityscapes 
+python pdseg/train.py --use_gpu --cfg ./configs/test_pet.yaml 
 ```
 
 ## 五. 进行评估
 
 ```shell
-python pdseg/eval.py --use_gpu \
-                       --cfg ./configs/unet_pet.yaml \
-                       DATASET.DATA_DIR ./dataset/mini_pet/ \
-                       DATASET.TRAIN_FILE_LIST ./dataset/mini_pet/file_list/train_list.txt \
-                       DATASET.TEST_FILE_LIST ./dataset/mini_pet/file_list/test_list.txt \
-                       DATASET.VAL_FILE_LIST ./dataset/mini_pet/file_list/val_list.txt \
-                       MODEL.MODEL_NAME deeplabv3p \
-                       MODEL.DEEPLAB.BACKBONE mobilenet \
-                       MODEL.DEEPLAB.DEPTH_MULTIPLIER 1.0 \
-                       MODEL.DEFAULT_NORM_TYPE bn \
-                       TRAIN.PRETRAINED_MODEL ./pretrained_model/deeplabv3plus_xception65_cityscapes 
+python pdseg/eval.py --use_gpu --cfg ./configs/test_pet.yaml 
 ```
