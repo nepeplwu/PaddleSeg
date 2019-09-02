@@ -42,14 +42,6 @@ python pretrained_model/download_model.py --name deeplabv3plus_xception65_citysc
   * 学习率
   * Batch大小
   * ...
-  
-
-|配置|值|
-|-|-|
-|DATASET.DATA_DIR|./dataset/mini_pet/|
-|DATASET.TRAIN_FILE_LIST|./dataset/mini_pet/file_list/train_list.txt|
-|DATASET.TEST_FILE_LIST|./dataset/mini_pet/file_list/test_list.txt|
-|DATASET.VAL_FILE_LIST|./dataset/mini_pet/file_list/val_list.txt|
 
 预训练模型的配置尤为重要，如果模型或者BACKBONE配置错误，会导致预训练的参数没有加载。模型配置可以从下载预训练模型时的输出看到：
 
