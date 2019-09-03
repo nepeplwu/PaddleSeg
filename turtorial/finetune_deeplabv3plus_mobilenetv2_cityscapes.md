@@ -65,7 +65,7 @@ MODEL:
     MODEL_NAME: "deeplabv3p"
     DEFAULT_NORM_TYPE: "bn"
     DEEPLAB:
-        BACKBONE: "xception_65"
+        BACKBONE: "mobilenet"
 TRAIN:
     PRETRAINED_MODEL: "./test/models/unet_coco/"
 
