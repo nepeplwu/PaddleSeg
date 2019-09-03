@@ -3,7 +3,7 @@
 * 本教程旨在介绍如何通过使用PaddleSeg提供的 ***`DeeplabV3+/Xception65/BatchNorm`*** 预训练模型在自定义数据集上进行训练。除了该配置之外，DeeplabV3+还支持以下不同组合的预训练模型，如果需要使用对应模型作为预训练模型，将下述内容中的Xception Backbone中的内容进行替换即可
 
 
-|预训练模型名称|BackBone|Normalization|预训练数据集|配置|
+|预训练模型名称|BackBone|Norm|数据集|配置|
 |-|-|-|-|-|
 |mobilnetv2-2-0_bn_cityscape|-|bn|ImageNet||
 |mobilnetv2-1-5_bn_cityscape|-|bn|ImageNet||
