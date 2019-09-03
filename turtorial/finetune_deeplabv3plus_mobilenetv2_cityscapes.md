@@ -78,11 +78,11 @@ AUG:
     FIX_RESIZE_SIZE: (512, 512)
 BATCH_SIZE: 4
 TRAIN:
-    MODEL_SAVE_DIR: "./test/saved_models/deeplabv3plus_xception65_cityscapes_pet/"
+    MODEL_SAVE_DIR: "./test/saved_models/deeplabv3plus_mobilenetv2_cityscapes_pet/"
     RESUME: False
     SNAPSHOT_EPOCH: 10
 TEST:
-    TEST_MODEL: "./test/saved_models/deeplabv3plus_xception65_cityscapes_pet/final"
+    TEST_MODEL: "./test/saved_models/deeplabv3plus_mobilenetv2_cityscapes_pet/final"
 SOLVER:
     NUM_EPOCHS: 500
     LR: 0.005
