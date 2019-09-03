@@ -1,6 +1,23 @@
 # 关于本教程
 
-* 本教程旨在介绍如何通过使用PaddleSeg提供的 ***`DeeplabV3+ Xception65`*** 预训练模型在自定义数据集上进行训练
+* 本教程旨在介绍如何通过使用PaddleSeg提供的 ***`DeeplabV3+/Xception65/BatchNorm`*** 预训练模型在自定义数据集上进行训练。除了该配置之外，DeeplabV3+还支持以下不同组合的预训练模型，如果需要使用对应模型作为预训练模型，将下述内容中的Xception Backbone中的内容进行替换即可
+
+
+|预训练模型名称|BackBone|Normalization|预训练数据集|配置|
+|-|-|-|-|-|
+|mobilnetv2-2-0_bn_cityscape|-|bn|ImageNet||
+|mobilnetv2-1-5_bn_cityscape|-|bn|ImageNet||
+|mobilnetv2-1-0_bn_cityscape|-|bn|ImageNet||
+|mobilnetv2-0-5_bn_cityscape|-|bn|ImageNet||
+|mobilnetv2-0-25_bn_cityscape|-|bn|ImageNet||
+|xception41_imagenet|-|bn|ImageNet||
+|xception65_imagenet|-|bn|ImageNet||
+|xception71_imagenet|-|bn|ImageNet||
+|deeplabv3p_mobilnetv2-1-0_bn_coco|MobileNet V2|bn|COCO||
+|deeplabv3p_xception65_bn_coco|Xception|bn|COCO||
+|deeplabv3p_mobilnetv2-1-0_bn_cityscapes|MobileNet V2|bn|Cityscapes||
+|deeplabv3p_xception65_gn_cityscapes|Xception|gn|Cityscapes||
+|**deeplabv3p_xception65_bn_cityscapes**|Xception|bn|Cityscapes||
 
 * 在阅读本教程前，请确保您已经了解过PaddleSeg的[快速入门](../README.md#快速入门)和[基础功能](../README.md#基础功能)等章节，以便对PaddleSeg有一定的了解
 
