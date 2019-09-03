@@ -1,12 +1,12 @@
 # 关于本教程
 
-* 本教程旨在介绍如何通过使用PaddleSeg提供的预训练模型在自定义数据集上进行训练
+* 本教程旨在介绍如何通过使用PaddleSeg提供的 ***`DeeplabV3+ Xception65`*** 预训练模型在自定义数据集上进行训练
 
 * 在阅读本教程前，请确保您已经了解过PaddleSeg的[快速入门](../README.md#快速入门)和[基础功能](../README.md#基础功能)等章节，以便对PaddleSeg有一定的了解
 
 * 本教程的所有命令都基于PaddleSeg主目录进行执行
 
-## 一. 准备预训练数据
+## 一. 准备待训练数据
 
 我们提前准备好了一份数据集，通过以下代码进行下载
 
@@ -16,9 +16,9 @@ python dataset/download_pet.py
 
 ## 二. 下载预训练模型
 
-接着我们下载预训练模型
+关于PaddleSeg支持的所有预训练模型的列表，我们可以从[预训练模型]()中查看我们所需模型的名字和配置
 
-关于PaddleSeg支持的所有预训练模型的列表，我们可以从[预训练模型]()中查看
+接着下载对应的预训练模型
 
 ```shell
 python pretrained_model/download_model.py --name deeplabv3plus_xception65_cityscapes
@@ -43,7 +43,7 @@ python pretrained_model/download_model.py --name deeplabv3plus_xception65_citysc
   * Batch大小
   * ...
 
-在三者中，预训练模型的配置尤为重要，如果模型或者BACKBONE配置错误，会导致预训练的参数没有加载，进而影响收敛速度。预训练模型相关的配置可以从下载预训练模型时的输出看到
+在三者中，预训练模型的配置尤为重要，如果模型或者BACKBONE配置错误，会导致预训练的参数没有加载，进而影响收敛速度。预训练模型相关的配置如第二步所展示。
 
 数据集的配置和数据路径有关，在本教程中，数据存放在`dataset/mini_pet`中
 
