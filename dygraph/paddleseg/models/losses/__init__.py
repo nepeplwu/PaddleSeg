@@ -13,3 +13,4 @@
 # limitations under the License.
 
 from .cross_entroy_loss import CrossEntropyLoss
+from .discriminative_loss import DiscriminativeLoss

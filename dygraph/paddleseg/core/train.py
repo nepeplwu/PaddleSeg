@@ -34,17 +34,20 @@ def check_logits_losses(logits, losses):
 def loss_computation(logits, label, losses):
     check_logits_losses(logits, losses)
     loss = 0
-    for i in range(len(logits)):
-        logit = logits[i]
-        if logit.shape[-2:] != label.shape[-2:]:
-            logit = F.interpolate(
-                logit,
-                label.shape[-2:],
-                mode='bilinear',
-                align_corners=True,
-                align_mode=1)
-        loss_i = losses['types'][i](logit, label)
-        loss += losses['coef'][i] * loss_i
+    loss += losses['types'][0](logits[0], label[0])
+    loss += losses['types'][1](logits[1], label[1])
+
+    # for i in range(len(logits)):
+    #     logit = logits[i]
+    #     if logit.shape[-2:] != label.shape[-2:]:
+    #         logit = F.interpolate(
+    #             logit,
+    #             label.shape[-2:],
+    #             mode='bilinear',
+    #             align_corners=True,
+    #             align_mode=1)
+    #     loss_i = losses['types'][i](logit, label)
+    #     loss += losses['coef'][i] * loss_i
     return loss
 
 
@@ -110,7 +113,7 @@ def train(model,
                 break
             train_reader_cost += timer.elapsed_time()
             images = data[0]
-            labels = data[1].astype('int64')
+            labels = data[1].astype('int64'), data[2].astype('int64')
             if nranks > 1:
                 logits = ddp_model(images)
                 loss = loss_computation(logits, labels, losses)
@@ -152,8 +155,9 @@ def train(model,
             if (iter % save_interval == 0
                     or iter == iters) and (val_dataset is not None):
                 num_workers = 1 if num_workers > 0 else 0
-                mean_iou, acc = evaluate(
-                    model, val_dataset, num_workers=num_workers)
+                with paddle.fluid.dygraph.no_grad():
+                    mean_iou, acc = evaluate(
+                        model, val_dataset, num_workers=num_workers)
                 model.train()
 
             if (iter % save_interval == 0 or iter == iters) and local_rank == 0:
