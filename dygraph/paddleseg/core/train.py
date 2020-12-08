@@ -35,7 +35,7 @@ def loss_computation(logits, label, losses):
     check_logits_losses(logits, losses)
     loss = 0
     loss += losses['types'][0](logits[0], label[0])
-    loss += losses['types'][1](logits[1], label[1])
+    loss += losses['types'][1](logits[1], label[1], label[0])
 
     # for i in range(len(logits)):
     #     logit = logits[i]
