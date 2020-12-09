@@ -44,20 +44,26 @@ class DiscriminativeLoss(nn.Layer):
         n = logit.shape[0]
         loss = 0
         for i in range(n):
-            instance_means = self._cluster_mean(logit[i], label[i])
-            if instance_means is None:
-                continue
-            var_term = self._variance_term(logit[i], label[i], instance_means)
-            dis_term = self._distance_term(instance_means)
-            reg_term = self._regularization_term(instance_means)
-            loss += self.alpha * var_term + self.beta * dis_term + self.gamma * reg_term
+            for cls in range(self.num_classes):
+                mask = (seglabel[i] == cls).astype('float32')
+                mask.stop_gradient = True
+                logit_n_c = logit[i] * mask
+                label_n_c = label[i] * mask
+                instance_means = self._cluster_mean(logit_n_c, label_n_c)
+                if instance_means is None:
+                    continue
+                var_term = self._variance_term(logit_n_c, label_n_c, instance_means)
+                dis_term = self._distance_term(instance_means)
+                reg_term = self._regularization_term(instance_means)
+                loss += self.alpha * var_term + self.beta * dis_term + self.gamma * reg_term
         return loss / n
 
     def _variance_term(self, logit, label, instance_means):
         instance_cnt = instance_means.shape[1]
         var_term = 0
+        instance_ids = paddle.unique(label).numpy()
         for _idx in range(instance_cnt):
-            instance_mask = (label == _idx).astype('float32')
+            instance_mask = (label == int(instance_ids[_idx + 1])).astype('float32')
             instance_mean = instance_means[:, _idx].unsqueeze(1).unsqueeze(2)
             variance = paddle.norm(logit - instance_mean, p=self.norm, axis=0)
             variance = paddle.clip(variance - self.delta_var, min=0) ** 2
@@ -87,9 +93,10 @@ class DiscriminativeLoss(nn.Layer):
             return None
 
         instance_means = []
+        instance_ids = paddle.unique(label).numpy()
         for _idx in range(1, instance_cnt):
 
-            instance_mask = (label == _idx).astype('int32')
+            instance_mask = (label == int(instance_ids[_idx])).astype('int32')
             instance_pixels = paddle.sum(instance_mask)
             instance_mean = paddle.sum(
                 logit * instance_mask, axis=[1, 2]) / instance_pixels
