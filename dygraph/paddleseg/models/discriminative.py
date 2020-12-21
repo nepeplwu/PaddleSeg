@@ -96,8 +96,6 @@ class InstanceFCN(nn.Layer):
         for i in range(n):
             instance_id = 1
             for _ in range(1, c):
-                if _ != 1 and _ != 3:
-                    continue
                 instance_maps = []
                 while True:
                     segmask = (seg_pred[i] == _).astype('int32')
@@ -126,6 +124,61 @@ class InstanceFCN(nn.Layer):
                     instance_id += 1
 
                     print(instance_id)
+        print(paddle.unique(instance_map))
+        return instance_map
+
+    def clustering_v2(self, seg_pred, instance_pred):
+        n, c, h, w = seg_pred.shape
+        _, s, _, _ = instance_pred.shape
+        seg_pred = paddle.argmax(seg_pred, axis=1)
+        instance_pred = paddle.transpose(instance_pred, (0, 2, 3, 1))
+        instance_map = paddle.zeros((n, h, w), dtype='int64')
+        for i in range(n):
+            instance_id = 1
+            for _ in range(1, c):
+                segmask = (seg_pred[i] == _).astype('int32')
+                segcnt = paddle.sum(segmask).numpy()[0]
+                instance_maps = []
+                counter = 0
+
+                while segcnt - paddle.sum((instance_map[i] != 0).astype('int32')).numpy()[0] > 200 and counter < 20:
+
+                    insmask = (instance_map[i] == 0).astype('float32')
+                    indexs = paddle.nonzero(segmask * insmask)
+                    if indexs.shape[0] == 0:
+                        break
+
+                    _idx = int(paddle.randint(indexs.shape[0]).numpy()[0])
+
+                    center = instance_pred[
+                        i, int(indexs[_idx][0]
+                               ), int(indexs[_idx][1])]
+                    last_center = 0
+
+                    while paddle.norm(center - last_center, p=2).numpy()[0] > 1e-4:
+                        distance = instance_pred[i] - center
+                        distance = paddle.norm(distance, p=2, axis=2)
+                        dismask = (distance < 1.5).astype('int32') ** 2
+                        last_center = center
+                        cnt = paddle.sum(dismask*segmask*insmask)
+                        center = paddle.sum(instance_pred[i] * (dismask*segmask*insmask).unsqueeze(2), axis=[0,1]) / cnt
+
+                    distance = instance_pred[i] - center
+                    distance = paddle.norm(distance, p=2, axis=2)
+                    dismask = (distance < 1.5).astype('int32') ** 2
+                    iop = (paddle.sum((1-insmask) * dismask * segmask) / paddle.sum(dismask * segmask)).numpy()[0]
+
+                    if iop < 0.5:
+                        dis_indexs = paddle.nonzero(dismask*segmask*insmask)
+                        instance_map[i] = paddle.scatter_nd_add(
+                            instance_map[i], dis_indexs,
+                            paddle.to_tensor([instance_id] * len(dis_indexs)))
+                        instance_id += 1
+                        counter = 0
+                        print(instance_id)
+                    else:
+                        counter += 1
+
         print(paddle.unique(instance_map))
         return instance_map
 
