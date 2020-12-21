@@ -92,35 +92,41 @@ class InstanceFCN(nn.Layer):
         _, s, _, _ = instance_pred.shape
         seg_pred = paddle.argmax(seg_pred, axis=1)
         instance_pred = paddle.transpose(instance_pred, (0, 2, 3, 1))
-
-        instance_id = 1
         instance_map = paddle.zeros((n, h, w), dtype='int64')
-
         for i in range(n):
-            for _ in range(c):
-
+            instance_id = 1
+            for _ in range(1, c):
+                if _ != 1 and _ != 3:
+                    continue
                 instance_maps = []
                 while True:
-                    mask = (seg_pred[i] == _).astype('int32') * (
-                        instance_map[i] == 0).astype('int32')
-                    indexs = paddle.nonzero(mask)
-
+                    segmask = (seg_pred[i] == _).astype('int32')
+                    insmask = (instance_map[i] == 0).astype('int32')
+                    indexs = paddle.nonzero(segmask * insmask)
                     if indexs.shape[0] == 0:
                         break
-
                     center = instance_pred[
                         i, int(indexs[0][0]
                                ), int(indexs[0][1])]
-                    dis = paddle.sum(
-                        (instance_pred[i] - center) *
-                        (instance_pred[i] - center),
-                        axis=2)
-                    dis_indexs = paddle.nonzero(dis < 0.5)
+                    last_center = 0
+
+                    while paddle.norm(center - last_center, p=2).numpy()[0] > 1e-5:
+                        distance = instance_pred[i] - center
+                        distance = paddle.norm(distance, p=2, axis=2)
+                        dismask = (distance < 2.5).astype('int32')
+                        last_center = center
+                        cnt = paddle.sum(dismask*segmask*insmask)
+                        center = paddle.sum(instance_pred[i] * (dismask*segmask*insmask).unsqueeze(2), axis=[0,1]) / cnt
+
+
+                    dis_indexs = paddle.nonzero(dismask*segmask*insmask)
                     instance_map[i] = paddle.scatter_nd_add(
                         instance_map[i], dis_indexs,
                         paddle.to_tensor([instance_id] * len(dis_indexs)))
                     instance_id += 1
 
+                    print(instance_id)
+        print(paddle.unique(instance_map))
         return instance_map
 
 

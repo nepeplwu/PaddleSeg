@@ -22,7 +22,7 @@ from paddleseg.cvlibs import manager
 @manager.LOSSES.add_component
 class DiscriminativeLoss(nn.Layer):
     def __init__(self,
-                 num_classes=19,
+                 num_classes=9,
                  norm=2,
                  ignore_index=255,
                  delta_var=0.5,
@@ -45,7 +45,7 @@ class DiscriminativeLoss(nn.Layer):
         loss = 0
         for i in range(n):
             for cls in range(self.num_classes):
-                mask = (seglabel[i] == cls).astype('float32')
+                mask = (seglabel[i] == cls).astype('int32')
                 mask.stop_gradient = True
                 logit_n_c = logit[i] * mask
                 label_n_c = label[i] * mask
@@ -63,7 +63,7 @@ class DiscriminativeLoss(nn.Layer):
         var_term = 0
         instance_ids = paddle.unique(label).numpy()
         for _idx in range(instance_cnt):
-            instance_mask = (label == int(instance_ids[_idx + 1])).astype('float32')
+            instance_mask = (label == int(instance_ids[_idx + 1])).astype('int32')
             instance_mean = instance_means[:, _idx].unsqueeze(1).unsqueeze(2)
             variance = paddle.norm(logit - instance_mean, p=self.norm, axis=0)
             variance = paddle.clip(variance - self.delta_var, min=0) ** 2
@@ -89,12 +89,12 @@ class DiscriminativeLoss(nn.Layer):
 
     def _cluster_mean(self, logit, label):
         instance_cnt = paddle.unique(label).shape[0]
-        if instance_cnt == 1:
-            return None
 
         instance_means = []
         instance_ids = paddle.unique(label).numpy()
-        for _idx in range(1, instance_cnt):
+        for _idx in range(instance_cnt):
+            if int(instance_ids[_idx]) == 0:
+                continue
 
             instance_mask = (label == int(instance_ids[_idx])).astype('int32')
             instance_pixels = paddle.sum(instance_mask)
@@ -102,6 +102,9 @@ class DiscriminativeLoss(nn.Layer):
                 logit * instance_mask, axis=[1, 2]) / instance_pixels
             instance_mean = instance_mean.unsqueeze(1)
             instance_means.append(instance_mean)
+
+        if len(instance_means) == 0:
+            return None
 
         instance_means = paddle.concat(instance_means, axis=1)
         return instance_means

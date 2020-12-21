@@ -58,32 +58,32 @@ class Cityscapes(Dataset):
         5: 255,
         6: 255,
         7: 0,
-        8: 1,
+        8: 0,
         9: 255,
         10: 255,
-        11: 2,
-        12: 3,
-        13: 4,
+        11: 0,
+        12: 0,
+        13: 0,
         14: 255,
         15: 255,
         16: 255,
-        17: 5,
+        17: 0,
         18: 255,
-        19: 6,
-        20: 7,
-        21: 8,
-        22: 9,
-        23: 10,
-        24: 11,
-        25: 12,
-        26: 13,
-        27: 14,
-        28: 15,
+        19: 0,
+        20: 0,
+        21: 0,
+        22: 0,
+        23: 0,
+        24: 1,
+        25: 2,
+        26: 3,
+        27: 4,
+        28: 5,
         29: 255,
         30: 255,
-        31: 16,
-        32: 17,
-        33: 18
+        31: 6,
+        32: 7,
+        33: 8
     }
 
     def __init__(self,
@@ -96,7 +96,7 @@ class Cityscapes(Dataset):
         self.file_list = list()
         mode = mode.lower()
         self.mode = mode
-        self.num_classes = 19
+        self.num_classes = 9
         self.ignore_index = 255
         self.load_instance = load_instance
 
